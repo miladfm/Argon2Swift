@@ -20,7 +20,7 @@ import argon2
 ///    let encodedData = hashResult.encodedData()
 ///    let encodedString = hashResult.encodedString()
 ///    ````
-public class Argon2Swift {
+@objc public class Argon2Swift: NSObject {
         
     /**
      Hashes a given `String` password with Argon2 utilizing the given salt as well as optionally the specific parameters of the hashing operation itself
@@ -39,7 +39,7 @@ public class Argon2Swift {
      
      - Returns: An `Argon2SwiftResult` containing the hash, encoding, and convenience methods to access the hash and encoded results in various forms
      */
-    public static func hashPasswordString(password: String, salt: Salt, iterations: Int = 32, memory: Int = 256, parallelism: Int = 2, length: Int = 32, type: Argon2Type = .i, version: Argon2Version = .V13) throws -> Argon2SwiftResult {
+    @objc public static func hashPasswordString(password: String, salt: Salt, iterations: Int = 32, memory: Int = 256, parallelism: Int = 2, length: Int = 32, type: Argon2Type = .i, version: Argon2Version = .V13) throws -> Argon2SwiftResult {
         // Perform the hash with the hashPasswordBytes method with the converted password
         return try hashPasswordBytes(password: Data(password.utf8), salt: salt, iterations: iterations, memory: memory, parallelism: parallelism, length: length, type: type, version: version)
     }
